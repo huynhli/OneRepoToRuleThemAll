@@ -1,0 +1,23 @@
+{
+  "id": "reactgowebsitetemplate",
+  "name": "ReactGoWebsiteTemplate",
+  "slug": "reactgowebsitetemplate",
+  "repository": "projects/reactgowebsitetemplate",
+  "summary": "Shell scripts that scaffold React and Vite websites and optional Go backend projects.",
+  "description": "The pinned repository contains two Bash project-generation scripts rather than a runnable website. They use Vite's React TypeScript template, add React Router, Tailwind CSS, and TanStack Query, and scaffold a basic Go module when selected.",
+  "domain": ["developer tooling", "project scaffolding", "web development"],
+  "technologies": ["Bash", "React", "TypeScript", "Vite", "React Router", "Tailwind CSS", "TanStack Query", "Go"],
+  "frameworks": ["React", "Vite", "React Router", "Tailwind CSS", "TanStack Query"],
+  "features": ["Clone a supplied repository and generate a React TypeScript Vite frontend", "Install common frontend routing, styling, and query packages", "Create a basic Go backend scaffold"],
+  "keywords": ["template", "scaffold", "builder", "automation", "website generator", "frontend", "backend"],
+  "aliases": ["React Go template", "website scaffold scripts", "frontend generator"],
+  "suggested_queries": ["Find the project scaffolding scripts", "Which project creates a React Vite frontend?"],
+  "approved_docs": [],
+  "sections": [
+    {"id": "overview", "title": "Project generator", "summary": "Two Bash scripts generate a new project layout; the repository does not contain a generated portfolio or deployable app.", "keywords": ["Bash", "shell scripts", "project generator", "scaffolding"]},
+    {"id": "frontend-scaffold", "title": "React and Vite frontend scaffold", "summary": "The scripts initialize a Vite React TypeScript app and install React Router, Tailwind CSS, and TanStack Query.", "keywords": ["React", "TypeScript", "Vite", "React Router", "Tailwind CSS", "TanStack Query"]},
+    {"id": "backend-scaffold", "title": "Optional Go backend scaffold", "summary": "The scripts create a basic Go module and main program when a backend is requested.", "keywords": ["Go", "backend", "scaffold", "go mod init"]}
+  ],
+  "frontend": {"build": false, "publish": false, "reason": "The repository is a project generator and has no committed generated frontend."},
+  "backend": {"kind": "none", "compose": {"enabled": false}, "render": {"enabled": false}}
+}

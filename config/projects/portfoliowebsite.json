@@ -1,0 +1,24 @@
+{
+  "id": "portfoliowebsite",
+  "name": "PortfolioWebsite",
+  "slug": "portfoliowebsite",
+  "repository": "projects/portfoliowebsite",
+  "summary": "An interactive software portfolio with a Phaser game and a conventional project, blog, and about site.",
+  "description": "The repository contains a React and TypeScript Vite website. Its root route serves a keyboard and gamepad controlled Phaser portfolio experience; /notGame serves the text portfolio with home, projects, game design blog, about, and image upload routes. The separate Go Fiber backend and the frontend's existing external API URLs remain upstream-owned and are not rewritten by this integration.",
+  "domain": ["software portfolio", "interactive web game", "developer profile"],
+  "technologies": ["React", "TypeScript", "Vite", "Phaser", "React Router", "Tailwind CSS", "Framer Motion", "Go", "Fiber", "MongoDB", "GitHub OAuth"],
+  "frameworks": ["React", "Vite", "Phaser", "React Router", "Tailwind CSS", "Fiber"],
+  "features": ["Explore an interactive Phaser portfolio using keyboard or gamepad controls", "Browse the text portfolio at /notGame, including home, projects, blog, and about routes", "View project showcases, experience, and technology stacks", "Open and download full stack and DevOps resumes", "Use an existing Go Fiber backend for article and image operations through its configured external API URLs"],
+  "keywords": ["portfolio", "interactive resume", "gamepad", "keyboard controls", "game design blog", "project showcase", "experience", "resume", "articles", "image upload"],
+  "aliases": ["Liam's portfolio", "interactive portfolio game", "text portfolio", "My Portfolio Website"],
+  "suggested_queries": ["Show me the interactive portfolio", "Find the game design blog", "Open the text portfolio"],
+  "approved_docs": ["README.md"],
+  "sections": [
+    {"id": "interactive-portfolio", "title": "Interactive Phaser portfolio", "summary": "The root route opens a top down portfolio game with keyboard and gamepad controls, interactive project objects, a map, and resume panels.", "keywords": ["Phaser", "interactive game", "gamepad", "keyboard", "resume", "map"]},
+    {"id": "text-portfolio", "title": "Text portfolio", "summary": "The /notGame route provides the conventional portfolio site with home, projects, about, and image upload pages.", "keywords": ["/notGame", "about", "projects", "experience", "technology stack"]},
+    {"id": "project-showcase", "title": "Project showcase", "summary": "Project pages present software and game work, technology choices, and external project links.", "keywords": ["projects", "showcase", "React", "Go", "games"]},
+    {"id": "game-design-blog", "title": "Game design blog", "summary": "The text portfolio includes game design blog and article routes backed by the existing external API configuration.", "keywords": ["blog", "game design", "articles", "article detail"]}
+  ],
+  "frontend": {"build": true, "publish": false, "root_site": true, "package_dir": "portfolioWebsite", "reason": "The nested Vite frontend is assembled as the monorepo root site; /projects/portfoliowebsite/ is not generated."},
+  "backend": {"kind": "none", "compose": {"enabled": false}, "render": {"enabled": false}}
+}

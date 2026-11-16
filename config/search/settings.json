@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "embedding_model": "onnx-community/all-MiniLM-L6-v2-ONNX",
+  "embedding_revision": "aff7a1dc4e8a1ea593e6ea21e95c22ef0a25966f",
+  "embedding_dtype": "q4",
+  "onnxruntime_web_version": "1.31.0-dev.20260914-8d85527a0",
+  "onnxruntime_web_runtime": "https://cdn.jsdelivr.net/npm/onnxruntime-web@1.31.0-dev.20260914-8d85527a0/dist/ort-wasm-simd-threaded.asyncify",
+  "embedding_library": "@huggingface/transformers",
+  "embedding_dimensions": 384,
+  "pooling": "mean",
+  "normalize": true,
+  "max_results": 8,
+  "suggested_queries": [
+    "Show me Go projects",
+    "Find semantic search",
+    "Which project fetches arXiv feeds?",
+    "Show me projects with authentication",
+    "Find the YouTube project"
+  ]
+}

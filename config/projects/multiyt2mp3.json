@@ -1,0 +1,22 @@
+{
+  "id": "multiyt2mp3",
+  "name": "MultiYt2Mp3",
+  "slug": "multiyt2mp3",
+  "repository": "projects/multiyt2mp3",
+  "summary": "A repository describing a batch multi-YouTube-to-MP3 project with an in-browser GUI.",
+  "description": "The reachable pinned commit contains a short project description and license only. The original sibling working directory has uncommitted frontend/backend files, but those are not part of the remote commit and are deliberately not included in this submodule or indexed as implemented features.",
+  "domain": ["media conversion", "YouTube"],
+  "technologies": [],
+  "frameworks": [],
+  "features": ["The committed README describes a batch conversion project with an in-browser GUI; implementation details are absent from the pinned commit."],
+  "keywords": ["YouTube", "MP3", "audio", "video", "batch", "media conversion", "browser GUI"],
+  "aliases": ["multi youtube to mp3", "youtube audio converter"],
+  "suggested_queries": ["Find the YouTube project", "Which project mentions batch media conversion?"],
+  "approved_docs": ["README.md"],
+  "sections": [
+    {"id": "overview", "title": "Committed project description", "summary": "The pinned README describes a batch multi-YouTube-to-MP3 project with an in-browser GUI; it does not include the implementation.", "keywords": ["YouTube", "MP3", "batch", "GUI"]},
+    {"id": "repository-state", "title": "Repository state and available code", "summary": "The remote commit used by this monorepo contains no frontend or backend source. Uncommitted files in the original sibling checkout remain outside this submodule.", "keywords": ["Git", "commit", "frontend", "backend", "source code"]}
+  ],
+  "frontend": {"build": false, "publish": false, "reason": "No frontend files exist in the pinned remote commit."},
+  "backend": {"kind": "none", "compose": {"enabled": false}, "render": {"enabled": false}}
+}

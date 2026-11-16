@@ -1,0 +1,45 @@
+{
+  "id": "scholarlysources",
+  "name": "ScholarlySources",
+  "slug": "scholarlysources",
+  "repository": "projects/scholarlysources",
+  "summary": "A local academic paper discovery app that searches arXiv records by meaning, author, and date.",
+  "description": "ScholarlySources has a React and Vite browser interface and a FastAPI backend. The Python service loads the all-MiniLM-L6-v2 sentence-transformer, stores a local arXiv corpus, ranks natural-language queries with normalized embeddings and cosine similarity, filters by author/date, and can manually refresh the corpus from arXiv feeds.",
+  "domain": ["academic research", "scientific papers", "information retrieval"],
+  "technologies": ["Python", "FastAPI", "React", "TypeScript", "Vite", "PyTorch", "sentence-transformers", "all-MiniLM-L6-v2", "arXiv API", "cosine similarity"],
+  "frameworks": ["FastAPI", "React", "Vite", "sentence-transformers"],
+  "features": ["Natural-language semantic paper search", "Author and inclusive date filtering", "Relevance or newest-first sorting", "Paginated search results", "Manual arXiv feed refresh with status polling", "Normalized sentence embeddings compared with cosine similarity"],
+  "keywords": ["semantic search", "embeddings", "vector similarity", "cosine similarity", "academic papers", "arXiv", "machine learning", "computer vision", "natural language processing", "NLP", "Python API"],
+  "aliases": ["paper search", "research paper finder", "academic search", "scientific source discovery"],
+  "suggested_queries": ["Find semantic search", "Show me a Python API", "Which project uses sentence embeddings?", "Find academic paper search"],
+  "approved_docs": ["README.md"],
+  "sections": [
+    {"id": "overview", "title": "Project overview", "summary": "A local single-user app for discovering arXiv papers by natural-language topic, author, and publication date.", "keywords": ["academic papers", "arXiv", "research", "search"]},
+    {"id": "semantic-search", "title": "Semantic retrieval and embeddings", "summary": "The FastAPI service uses sentence-transformers all-MiniLM-L6-v2 to encode queries and papers, normalizes vectors, and ranks by cosine similarity.", "keywords": ["semantic search", "sentence embeddings", "all-MiniLM-L6-v2", "normalized vectors", "cosine similarity", "vector retrieval"]},
+    {"id": "filters-and-ranking", "title": "Author, date, and result ranking", "summary": "Search supports partial case-insensitive author matching, inclusive date bounds, relevance or newest sorting, and pagination.", "keywords": ["author filtering", "date range", "ranking", "relevance", "pagination"]},
+    {"id": "arxiv-refresh", "title": "arXiv corpus refresh", "summary": "A manually triggered refresh fetches three configured arXiv feeds, deduplicates papers, rebuilds embeddings, and preserves the previous corpus if refresh fails.", "keywords": ["arXiv API", "feeds", "crawler", "refresh", "deduplication"]},
+    {"id": "architecture", "title": "React frontend and FastAPI backend", "summary": "The Vite frontend calls a FastAPI JSON API for filters, semantic search, refresh submission, and refresh status.", "keywords": ["React", "Vite", "FastAPI", "Python", "REST API", "full stack"]},
+    {"id": "deployment-limits", "title": "Local runtime and deployment limits", "summary": "The backend loads PyTorch and a sentence-transformer model at startup and stores its corpus locally; model memory and local storage make it unsuitable for the free Render image without a separate measured deployment plan.", "keywords": ["PyTorch", "model inference", "memory", "local storage", "deployment"]}
+  ],
+  "frontend": {
+    "build": true,
+    "publish": true,
+    "package_dir": "frontend",
+    "build_command": ["npm", "run", "build"],
+    "router": "none",
+    "api_prefix": "/api/scholarlysources",
+    "staged_api_rewrite": {"file": "src/api.ts", "from": "'/api", "to": "'/api/scholarlysources"},
+    "reason": "The build is staged from the pinned commit; its relative API prefix is namespaced in the temporary build copy only."
+  },
+  "backend": {
+    "kind": "python",
+    "framework": "FastAPI",
+    "module_dir": "paper_search",
+    "api_prefix": "/api",
+    "health_path": "/api/health",
+    "compose": {"enabled": true, "profile": "scholarlysources", "service": "scholarlysources", "port": 8000, "reason": "Available as an opt-in local service; first startup downloads/loads PyTorch and the embedding model."},
+    "render": {"enabled": false, "reason": "PyTorch plus sentence-transformer model startup and inference are too large for the target free Render memory budget without measured optimization."},
+    "database": null,
+    "environment_variables": []
+  }
+}

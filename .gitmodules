@@ -1,0 +1,21 @@
+[submodule "projects/construct"]
+	path = projects/construct
+	url = https://github.com/huynhli/Construct.git
+[submodule "projects/multiyt2mp3"]
+	path = projects/multiyt2mp3
+	url = https://github.com/huynhli/MultiYt2Mp3.git
+[submodule "projects/nearestnews"]
+	path = projects/nearestnews
+	url = https://github.com/huynhli/NearestNews.git
+[submodule "projects/reactgowebsitetemplate"]
+	path = projects/reactgowebsitetemplate
+	url = https://github.com/huynhli/ReactGoWebsiteTemplate.git
+[submodule "projects/scholarlysources"]
+	path = projects/scholarlysources
+	url = https://github.com/huynhli/ScholarlySources.git
+[submodule "projects/searchme"]
+	path = projects/searchme
+	url = https://github.com/huynhli/SearchMe.git
+[submodule "projects/portfoliowebsite"]
+	path = projects/portfoliowebsite
+	url = https://github.com/huynhli/portfolioWebsite.git

@@ -1,0 +1,22 @@
+{
+  "id": "nearestnews",
+  "name": "NearestNews",
+  "slug": "nearestnews",
+  "repository": "projects/nearestnews",
+  "summary": "An experimental news-classification project exploring geolocation similarity.",
+  "description": "The reachable repository contains a README and license. The README describes finding news about a query and ranking it by distance from a selected location, but the pinned commit has no implementation files or documented framework.",
+  "domain": ["news", "geolocation", "classification"],
+  "technologies": [],
+  "frameworks": [],
+  "features": ["The README proposes query-based news discovery ranked by distance from a selected location."],
+  "keywords": ["news", "articles", "location", "geography", "distance", "similarity", "classification"],
+  "aliases": ["location-aware news", "geospatial news"],
+  "suggested_queries": ["Which project explores location-aware news?", "Find geolocation similarity"],
+  "approved_docs": ["README.md"],
+  "sections": [
+    {"id": "overview", "title": "Project concept", "summary": "The README describes searching news articles by query and ranking results by distance from a selected location.", "keywords": ["news search", "articles", "query", "geolocation", "distance"]},
+    {"id": "repository-state", "title": "Implementation status", "summary": "The pinned repository contains no implementation source, package manifest, API, or deployment configuration.", "keywords": ["repository", "source code", "framework", "implementation"]}
+  ],
+  "frontend": {"build": false, "publish": false, "reason": "No frontend source exists in the pinned remote commit."},
+  "backend": {"kind": "none", "compose": {"enabled": false}, "render": {"enabled": false}}
+}

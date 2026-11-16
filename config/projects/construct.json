@@ -1,0 +1,43 @@
+{
+  "id": "construct",
+  "name": "Construct",
+  "slug": "construct",
+  "repository": "projects/construct",
+  "summary": "A project management web app for organizing projects, tasks, and team access.",
+  "description": "Construct is a React and Go project management application. Its committed frontend includes project, task, task-detail, login, and sign-up screens. The Go API uses Fiber, PostgreSQL, and JWT-protected routes for project and task operations.",
+  "domain": ["project management", "team productivity", "task tracking"],
+  "technologies": ["Go", "React", "TypeScript", "Vite", "React Router", "Fiber", "PostgreSQL", "JWT", "Docker Compose"],
+  "frameworks": ["React", "Vite", "React Router", "Fiber"],
+  "features": ["Project and task management", "Login and account registration", "JWT-protected project and task API", "PostgreSQL data access"],
+  "keywords": ["tasks", "projects", "teams", "authentication", "authorization", "database", "full stack", "REST API"],
+  "aliases": ["project tracker", "task manager", "team task app"],
+  "suggested_queries": ["Show me Go projects", "Where is authentication implemented?", "Find project and task management"],
+  "approved_docs": ["README.md", "frontend/README.md"],
+  "sections": [
+    {"id": "overview", "title": "Project overview", "summary": "A team project-management application organized around projects and tasks.", "keywords": ["project management", "task tracking", "teams"]},
+    {"id": "frontend", "title": "React frontend", "summary": "The Vite and React Router interface includes project, task list, task details, login, and sign-up pages.", "keywords": ["React", "TypeScript", "Vite", "React Router", "frontend", "login", "signup"]},
+    {"id": "authentication", "title": "Authentication and API", "summary": "A Go Fiber API exposes versioned project and task routes and protects account-specific operations with JWT middleware.", "keywords": ["Go", "Fiber", "JWT", "authentication", "authorization", "REST API"]},
+    {"id": "data-layer", "title": "PostgreSQL data layer", "summary": "The Go backend connects to PostgreSQL using pgx and reads credentials from environment configuration.", "keywords": ["PostgreSQL", "database", "pgx", "environment variables"]},
+    {"id": "deployment", "title": "Container setup", "summary": "The repository includes Dockerfiles and a Compose setup for the frontend and backend; the checked-in configuration expects an externally supplied backend environment file.", "keywords": ["Docker", "Docker Compose", "containers"]}
+  ],
+  "frontend": {
+    "build": true,
+    "publish": false,
+    "package_dir": "frontend",
+    "build_command": ["npm", "run", "build"],
+    "router": "react-router-dom",
+    "api_prefix": "/api/construct",
+    "publish_reason": "The frontend depends on the Go API, while backend startup requires PostgreSQL credentials and the repository has no checked-in schema/migration or safe local database bootstrap. Enable publishing after those upstream requirements are documented and configured."
+  },
+  "backend": {
+    "kind": "go",
+    "framework": "Fiber",
+    "module_dir": "backend",
+    "api_prefix": "/api",
+    "health_path": "/api/v1/",
+    "compose": {"enabled": false, "service": "construct", "reason": "Requires PostgreSQL and credentials; no checked-in schema/bootstrap or env example is available."},
+    "render": {"enabled": false, "reason": "Database bootstrap and production authentication secrets are not defined."},
+    "database": {"kind": "postgresql", "service": "construct-db", "persistent_volume": true},
+    "environment_variables": ["DB_USERNAME", "DB_PASSWORD", "DB_HOST", "DB_NAME", "DB_PORT", "JWT_SECRET", "PORT"]
+  }
+}

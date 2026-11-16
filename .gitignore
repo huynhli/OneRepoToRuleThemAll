@@ -1,0 +1,20 @@
+# Local build products and dependency caches
+node_modules/
+**/node_modules/
+dist/
+generated/
+.pytest_cache/
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.hf-cache/
+.model-cache/
+.wrangler/
+*.log
+
+# Local Python model/cache data
+infrastructure/data/
+

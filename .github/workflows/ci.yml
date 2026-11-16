@@ -1,0 +1,64 @@
+name: validate-portfolio
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+          # Set this read-only token only if a registered submodule is private.
+          token: ${{ secrets.SUBMODULES_READ_TOKEN || github.token }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: projects/searchme/package-lock.json
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.6'
+      - run: python scripts/validate_projects.py
+      - run: npm ci
+        working-directory: projects/searchme
+      - name: Build and assemble static applications
+        run: python scripts/build_frontends.py
+      - run: python -m unittest discover -s tests -v
+      - run: npm test
+        working-directory: projects/searchme
+      - run: npm run typecheck
+        working-directory: projects/searchme
+      - run: npm run verify:semantic
+        working-directory: projects/searchme
+      - run: go test ./...
+        working-directory: projects/construct/backend
+      - run: python scripts/generate_nginx.py
+      - run: python scripts/generate_compose.py
+      - run: docker compose config -q
+      - run: docker compose build gateway
+      - run: docker compose run --rm gateway nginx -t
+      - run: docker build -f infrastructure/render/Dockerfile -t portfolio-render-gateway .
+      - run: npx --yes wrangler@4.162.0 deploy --dry-run --config infrastructure/cloudflare/wrangler.jsonc
+      - name: Smoke test assembled routes
+        run: |
+          docker compose up --build -d
+          curl --fail --retry 5 --retry-delay 2 http://localhost:8080/ > /dev/null
+          curl --fail http://localhost:8080/notGame > /dev/null
+          curl --fail http://localhost:8080/search/ > /dev/null
+          curl --fail http://localhost:8080/work/scholarlysources/ > /dev/null
+          curl --fail http://localhost:8080/projects/scholarlysources/ > /dev/null
+          curl --fail http://localhost:8080/search-index/embeddings.json > /dev/null
+          status=$(curl --silent --output /dev/null --write-out '%{http_code}' http://localhost:8080/projects/scholarlysources/assets/missing.js)
+          test "$status" = "404"
+      - if: always()
+        run: docker compose down
